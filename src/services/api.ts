@@ -1,10 +1,14 @@
-// src/services/api.ts
 import axios from 'axios';
+import Config from 'react-native-config';
 
-const APP_ID = 'OUDTOCNIBFKL4ZL';
-const ORG_ID = '96cf51a005304ba293fa59b893869241';
-const API_BASE_URL = 'https://api.timbu.cloud';
-const API_KEY = 'f53cfcb9a51045d49b030e88c638ae0f20240706005959552200';
+const APP_ID = Config.APP_ID;
+const ORG_ID = Config.ORG_ID;
+const API_BASE_URL = Config.API_BASE_URL;
+const API_KEY = Config.API_KEY;
+
+if (!APP_ID || !ORG_ID || !API_BASE_URL || !API_KEY) {
+  throw new Error('Missing required environment variables');
+}
 
 export interface Price {
   [currency: string]: any[];
